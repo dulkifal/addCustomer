@@ -258,3 +258,24 @@ body {
   width: 442px;
     height: 255px;
 }
+
+.tablerow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: #2E2E2E 1px solid;
+  
+  
+}
+.tablerow h3{
+  color: #676464;
+  font-size: 12px;
+  padding: 5px 0 0 10px;
+}
+.tablerow input{
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+   
+}
