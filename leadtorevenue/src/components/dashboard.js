@@ -1,40 +1,24 @@
 import React from 'react';
-import axios from 'axios';
 
 import { useState } from 'react';
-import { Formik, Form, useField, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 import Contact from '../assets/images/contact.svg';
 import editIcon from '../assets/images/editIcon.svg';
 import fluentPerson from '../assets/images/fluentPerson.svg';
 import square_root from '../assets/images/square_root.svg';
 
-const MyTextField = ({ label, ...props }) => {
-  const [field, meta, helpers] = useField(props);
-  return (
-    <>
-      <label htmlFor={props.id || props.name}> </label>
-
-      <input {...field} {...props} />
-
-
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </>
-  );
-};
-
 const addVarible = (count) => {
-  
+
   let arr = [];
-  
+
 
   for (let i = 0; i < count; i++) {
+    
     arr.push(
       <>
-        <input disabled placeholder={'Variable ' + (i + 1) + ' key'} />
-        <Field name={'variableValues.additionalProp' + (i + 1)} placeholder='value' />
+        <Field name={'variableValues.['+i+']key'} placeholder={'Variable' + (i + 1) + ' key'} />
+        <Field name={'variableValues.[' + i +']value' } placeholder='value' />
 
       </>
     )
@@ -51,36 +35,36 @@ const addContact = (totalContact) => {
       <>
         <div className="editContact">
           <img src={editIcon} className="editIcon" alt="" />
-        <div className="contacttable">
-          <div className="tablerow">
+          <div className="contacttable">
+            <div className="tablerow">
 
-            <h3>Title</h3>
-            <Field name={contactName+'.title'} placeholder='Mr' />
+              <h3>Title</h3>
+              <Field name={contactName + '.title'} placeholder='Mr' />
+            </div>
+            <div className="tablerow">
+
+              <h3>Name</h3>
+              <Field name={contactName + '.name'} placeholder='Mrfsf' />
+            </div>
+            <div className="tablerow">
+
+              <h3>Phome Number</h3>
+              <Field name={contactName + '.email'} placeholder='Mrfdsf@gmail.com' />
+            </div>
+            <div className="tablerow">
+
+              <h3>Email</h3>
+              <Field name={contactName + '.contactNo'} placeholder='Mrfds' />
+            </div><div className="tablerow">
+
+              <h3>Designation</h3>
+              <Field name={contactName + '.designation'} placeholder='Mrds' />
+            </div><div className="tablerow">
+
+              <h3>Telegram Username</h3>
+              <Field name={contactName + '.tgUsername'} placeholder='Mr  dff' />
+            </div>
           </div>
-          <div className="tablerow">
-
-            <h3>Name</h3>
-              <Field name={contactName+ '.name'} placeholder='Mrfsf' />
-          </div>
-          <div className="tablerow">
-
-            <h3>Phome Number</h3>
-              <Field name={contactName+ '.email'} placeholder='Mrfdsf@gmail.com' />
-          </div>
-          <div className="tablerow">
-
-            <h3>Email</h3>
-              <Field name={contactName+ '.contactNo'} placeholder='Mrfds' />
-          </div><div className="tablerow">
-
-            <h3>Designation</h3>
-              <Field name={contactName+ '.designation'} placeholder='Mrds' />
-          </div><div className="tablerow">
-
-            <h3>Telegram Username</h3>
-              <Field name={contactName+ '.tgUsername'} placeholder='Mr  dff' />
-          </div>
-        </div>
         </div>
       </>
     )
@@ -90,7 +74,7 @@ const addContact = (totalContact) => {
 
 
 const Dashboard = () => {
-  
+
   const [count, setCount] = useState(1);
   const [totalContact, setTotalContact] = useState(1);
 
@@ -99,7 +83,7 @@ const Dashboard = () => {
     <div>
       <Formik
         initialValues={{
-          id :0 ,
+          id: 0,
           account: {
             name: "",
             type: "",
@@ -116,16 +100,22 @@ const Dashboard = () => {
               designation: ""
             }
           ],
-          variableValues: {
-            additionalProp1: "",
-            additionalProp2: "",
-            additionalProp3: ""
-          },
+          variableValues: {},
           internName: "sample"
 
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-         
+          
+        
+           
+         values.variableValues= values.variableValues.map(item => {
+            item.key = item.value;
+          }
+          )
+
+
+          
+
           fetch("clients/customers/add", {
             method: "POST",
             headers: {
@@ -135,7 +125,7 @@ const Dashboard = () => {
           }).then(res => res.json())
             .then(data => {
               console.log(data);
-           
+
               resetForm();
               setSubmitting(false);
             }).catch(err => {
@@ -146,14 +136,11 @@ const Dashboard = () => {
             )
         }
         }
-          
+
       >
 
         <Form className='dashboard' >
-          <div className="internName  businessinputs">
-            <Field name='id' placeholder='Type Uniq ID' />
-            <Field name='internName' placeholder='Intern Name' />
-          </div>
+
           <div className="addcustomer">
             <h1>Add Customer</h1>
             <button type='submit'>ADD CUSTOMER</button>
@@ -188,7 +175,7 @@ const Dashboard = () => {
                 <div className="varinputs">
                   {/* map */}
 
-                  {addVarible(count)}
+                  {addVarible(count,)}
                 </div>
 
               </div>
@@ -200,7 +187,7 @@ const Dashboard = () => {
                   <div className="divgrow">
 
                   </div>
-                  <button onClick={()=>{setTotalContact(totalContact + 1)}} >ADD NEW</button>
+                  <button onClick={() => { setTotalContact(totalContact + 1) }} >ADD NEW</button>
 
                 </div>
                 {addContact(totalContact)}

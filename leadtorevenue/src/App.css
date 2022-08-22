@@ -137,10 +137,7 @@ body {
   flex-direction: column;
   padding: 3rem;
 }
-.internName{
-  margin-bottom: 1rem;
-}
-
+ 
 .addcustomer {
   display: flex;
   flex-direction: row;
