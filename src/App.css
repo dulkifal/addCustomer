@@ -285,9 +285,9 @@ body {
 align-self: center; 
 } */
 
-.editContact  .tablerow{
+.editContact {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-bottom: #2E2E2E 1px solid;
@@ -295,5 +295,5 @@ align-self: center;
   
 }
 .editIcon{
-  align-self: center;
+  align-self: flex-end;
 }

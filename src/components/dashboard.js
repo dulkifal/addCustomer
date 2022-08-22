@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { useState } from 'react';
 import { Formik, Form, useField, Field } from 'formik';
@@ -25,7 +26,9 @@ const MyTextField = ({ label, ...props }) => {
 };
 
 const addVarible = (count) => {
+  
   let arr = [];
+  
 
   for (let i = 0; i < count; i++) {
     arr.push(
@@ -43,6 +46,7 @@ const addVarible = (count) => {
 const addContact = (totalContact) => {
   let arr = [];
   for (let i = 0; i < totalContact; i++) {
+    let contactName = `contacts[${i}]`
     arr.push(
       <>
         <div className="editContact">
@@ -51,7 +55,7 @@ const addContact = (totalContact) => {
           <div className="tablerow">
 
             <h3>Title</h3>
-            <Field name={'contacts[' + i + '].title'} placeholder='Mr' />
+            <Field name={contactName+'.title'} placeholder='Mr' />
           </div>
           <div className="tablerow">
 
@@ -120,13 +124,29 @@ const Dashboard = () => {
 
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          console.log(values);
-          setData(data => [...data, values]);
-          alert(JSON.stringify(values));
-          await new Promise(r => setTimeout(r, 500));
-          setSubmitting(false);
-          resetForm({ values: '' });
-        }}
+          // console.log(values);
+          fetch("/api", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(values)
+          }).then(res => res.json())
+            .then(data => {
+              console.log(data);
+              setData(data);
+              resetForm();
+              setSubmitting(false);
+            }).catch(err => {
+              console.log(err);
+            }).finally(() => {
+              setSubmitting(false);
+            }
+            )
+        }
+        }
+
+          
       >
 
 
@@ -167,7 +187,7 @@ const Dashboard = () => {
                 <div className="varinputs">
                   {/* map */}
 
-                  {addVarible(count)}
+                  {addVarible(count, setData)}
                 </div>
 
               </div>
