@@ -25,26 +25,70 @@ const MyTextField = ({ label, ...props }) => {
 };
 
 const addVarible = (count) => {
-   
-let arr = [];
+  let arr = [];
 
   for (let i = 0; i < count; i++) {
-arr.push(
-<>
-      <input disabled placeholder={'Variable ' + (i +1 )+  ' key'} />
-      <Field name={'variableValues.additionalProp'+ (i+1)} placeholder='value' />
+    arr.push(
+      <>
+        <input disabled placeholder={'Variable ' + (i + 1) + ' key'} />
+        <Field name={'variableValues.additionalProp' + (i + 1)} placeholder='value' />
 
-    </>
+      </>
     )
-    console.log('arr',arr);
+
+  }
+  return arr;
 }
-return arr;
+
+const addContact = (totalContact) => {
+  let arr = [];
+  for (let i = 0; i < totalContact; i++) {
+    arr.push(
+      <>
+        <div className="editContact">
+          <img src={editIcon} className="editIcon" alt="" />
+        <div className="contacttable">
+          <div className="tablerow">
+
+            <h3>Title</h3>
+            <Field name={'contacts[' + i + '].title'} placeholder='Mr' />
+          </div>
+          <div className="tablerow">
+
+            <h3>Name</h3>
+            <Field name='contacts[0].name' placeholder='Mrfsf' />
+          </div>
+          <div className="tablerow">
+
+            <h3>Phome Number</h3>
+            <Field name='contacts[0].email' placeholder='Mrfdsf' />
+          </div>
+          <div className="tablerow">
+
+            <h3>Email</h3>
+            <Field name='contacts[0].contactNo' placeholder='Mrfds' />
+          </div><div className="tablerow">
+
+            <h3>Designation</h3>
+            <Field name='contacts[0].designation' placeholder='Mrds' />
+          </div><div className="tablerow">
+
+            <h3>Telegram Username</h3>
+            <Field name='contacts[0].tgUsername' placeholder='Mr  dff' />
+          </div>
+        </div>
+        </div>
+      </>
+    )
+  }
+  return arr;
 }
+
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(1);
-
+  const [totalContact, setTotalContact] = useState(1);
 
 
   return (
@@ -135,39 +179,10 @@ const Dashboard = () => {
                   <div className="divgrow">
 
                   </div>
-                  <button >ADD NEW</button>
+                  <button onClick={()=>{setTotalContact(totalContact + 1)}} >ADD NEW</button>
 
                 </div>
-                <div className="contacttable">
-                  <div className="tablerow">
-
-                    <h3>Title</h3>
-                    <Field name='contacts[0].title' placeholder='Mr' />
-                  </div>
-                  <div className="tablerow">
-
-                    <h3>Name</h3>
-                    <Field name='contacts[0].name' placeholder='Mrfsf' />
-                  </div>
-                  <div className="tablerow">
-
-                    <h3>Phome Number</h3>
-                    <Field name='contacts[0].email' placeholder='Mrfdsf' />
-                  </div>
-                  <div className="tablerow">
-
-                    <h3>Email</h3>
-                    <Field name='contacts[0].contactNo' placeholder='Mrfds' />
-                  </div><div className="tablerow">
-
-                    <h3>Designation</h3>
-                    <Field name='contacts[0].designation' placeholder='Mrds' />
-                  </div><div className="tablerow">
-
-                    <h3>Telegram Username</h3>
-                    <Field name='contacts[0].tgUsername' placeholder='Mr  dff' />
-                  </div>
-                </div>
+                {addContact(totalContact)}
 
 
               </div>
