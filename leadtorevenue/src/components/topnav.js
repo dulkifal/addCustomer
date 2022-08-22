@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import Home from '../assets/images/homeIcon.svg';
 import Article from '../assets/images/article.svg';
 import bookmark from '../assets/images/bookmark.svg';
@@ -7,28 +7,12 @@ var SideImage = require('../assets/images/sideImage.png');
 
 
 const Topnav = ()=>{
-  const [data, setData] = useState([]);
-  fetch("/api")
-    .then((res) => res.json())
-    .then((data) => setData(data.message)
-    )
-
-    // post
-
-    fetch("/api", {
-      method: 'POST',
-      body: JSON.stringify({
-        name: 'John Doe',
-        age: 30
-      })
-    })
-    
-
+  
   return(
     <div className="topnav">
       <div className="circle">
         <h2 className="logo">CA</h2>
-        <p>{!data ? "Loading..." : data}</p>
+       
       </div>
 
     </div>

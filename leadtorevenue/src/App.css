@@ -10,11 +10,7 @@ body {
 
 }
 
-/* .App{
-  display: grid;
-  grid-template-columns:  50% 50%;
-} */
-
+ 
 /* topbar */
 
 .topnav {
@@ -140,6 +136,9 @@ body {
   display: flex;
   flex-direction: column;
   padding: 3rem;
+}
+.internName{
+  margin-bottom: 1rem;
 }
 
 .addcustomer {

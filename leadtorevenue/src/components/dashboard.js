@@ -60,25 +60,25 @@ const addContact = (totalContact) => {
           <div className="tablerow">
 
             <h3>Name</h3>
-            <Field name='contacts[0].name' placeholder='Mrfsf' />
+              <Field name={contactName+ '.name'} placeholder='Mrfsf' />
           </div>
           <div className="tablerow">
 
             <h3>Phome Number</h3>
-            <Field name='contacts[0].email' placeholder='Mrfdsf' />
+              <Field name={contactName+ '.email'} placeholder='Mrfdsf@gmail.com' />
           </div>
           <div className="tablerow">
 
             <h3>Email</h3>
-            <Field name='contacts[0].contactNo' placeholder='Mrfds' />
+              <Field name={contactName+ '.contactNo'} placeholder='Mrfds' />
           </div><div className="tablerow">
 
             <h3>Designation</h3>
-            <Field name='contacts[0].designation' placeholder='Mrds' />
+              <Field name={contactName+ '.designation'} placeholder='Mrds' />
           </div><div className="tablerow">
 
             <h3>Telegram Username</h3>
-            <Field name='contacts[0].tgUsername' placeholder='Mr  dff' />
+              <Field name={contactName+ '.tgUsername'} placeholder='Mr  dff' />
           </div>
         </div>
         </div>
@@ -90,7 +90,7 @@ const addContact = (totalContact) => {
 
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
+  
   const [count, setCount] = useState(1);
   const [totalContact, setTotalContact] = useState(1);
 
@@ -99,6 +99,7 @@ const Dashboard = () => {
     <div>
       <Formik
         initialValues={{
+          id :0 ,
           account: {
             name: "",
             type: "",
@@ -120,12 +121,12 @@ const Dashboard = () => {
             additionalProp2: "",
             additionalProp3: ""
           },
-          internName: ""
+          internName: "sample"
 
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          // console.log(values);
-          fetch("/api", {
+         
+          fetch("clients/customers/add", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -134,7 +135,7 @@ const Dashboard = () => {
           }).then(res => res.json())
             .then(data => {
               console.log(data);
-              setData(data);
+           
               resetForm();
               setSubmitting(false);
             }).catch(err => {
@@ -145,14 +146,14 @@ const Dashboard = () => {
             )
         }
         }
-
           
       >
 
-
-
-
         <Form className='dashboard' >
+          <div className="internName  businessinputs">
+            <Field name='id' placeholder='Type Uniq ID' />
+            <Field name='internName' placeholder='Intern Name' />
+          </div>
           <div className="addcustomer">
             <h1>Add Customer</h1>
             <button type='submit'>ADD CUSTOMER</button>
@@ -187,7 +188,7 @@ const Dashboard = () => {
                 <div className="varinputs">
                   {/* map */}
 
-                  {addVarible(count, setData)}
+                  {addVarible(count)}
                 </div>
 
               </div>
