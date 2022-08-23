@@ -157,6 +157,8 @@ body {
   flex-grow: 0;
   font-size: 15;
   padding: 5px;
+  background-color: #D7D8E0;
+  border-radius: 5px;
   /* padding: 1rem; */
 }
 
@@ -168,7 +170,7 @@ body {
 .formdiv .business {
   display: flex;
   flex-direction: column;
-  background-color: #F7F7F7;
+  background-color: #E7EEF4;
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 5px;
@@ -212,7 +214,7 @@ body {
 .variables {
   display: flex;
     flex-direction: column;
-    background-color: #F7F7F7;
+    background-color: #E7EEF4;
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 5px;
@@ -248,8 +250,8 @@ body {
     box-shadow: inset 2px 1px 5px 0px #afa9a9;
     text-align: center;
 }
-.contact table{
-  background: #FFFFFF 0% 0% no-repeat padding-box;
+.contact  {
+  background-color: #E7EEF4;
   border-radius: 5px;
   width: 442px;
     height: 255px;
@@ -261,8 +263,13 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: #2E2E2E 1px solid;
+   box-shadow: inset 2px 1px 5px 0px #afa9a9;
   
   
+}
+.tablerow1  {
+   
+  box-shadow: inset 2px 1px 5px 0px #afa9a9;
 }
 .tablerow h3{
   color: #676464;
@@ -281,13 +288,25 @@ body {
 align-self: center; 
 } */
 
+.addcontact{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 3px 10px;
+   margin: 1px 1rem;
+  background-color: #D7D8E0;
+  border-radius: 5px;
+  
+  
+}
 .editContact {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: #2E2E2E 1px solid;
-  
+  align-items:  stretch;
+  background: #FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
   
 }
 .editIcon{

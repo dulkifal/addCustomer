@@ -13,7 +13,7 @@ const addContact = (totalContact) => {
             <div className="tablerow">
 
               <h3>Title</h3>
-              <Field name={contactName + '.title'} placeholder='Mr' />
+              <Field name={contactName + '.title'} placeholder='Mr' className="tablerow1" />
             </div>
             <div className="tablerow">
 

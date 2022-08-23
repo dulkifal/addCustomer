@@ -107,7 +107,7 @@ const Dashboard = () => {
 
                 </div>
                 <div className="varinputs">
-                  
+
 
                   {VarCard(count)}
 
@@ -122,7 +122,10 @@ const Dashboard = () => {
                   <div className="divgrow">
 
                   </div>
-                  <button onClick={() => { setTotalContact(totalContact + 1) }} >ADD NEW</button>
+                  <div className='addcontact'>
+                    <img src={fluentPerson} alt="" />
+                    <button onClick={() => { setTotalContact(totalContact + 1) }} >ADD NEW</button>
+                  </div>
 
                 </div>
                 {ContactCard(totalContact)}
