@@ -1,77 +1,12 @@
 import React from 'react';
-
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import VarCard from './varCard'
+import ContactCard from './contactCard'
 
 import Contact from '../assets/images/contact.svg';
-import editIcon from '../assets/images/editIcon.svg';
 import fluentPerson from '../assets/images/fluentPerson.svg';
 import square_root from '../assets/images/square_root.svg';
-
-const addVarible = (count) => {
-
-  let arr = [];
-
-
-  for (let i = 0; i < count; i++) {
-    
-    arr.push(
-      <>
-        <Field name={'variableValues.['+i+']key'} placeholder={'Variable' + (i + 1) + ' key'} />
-        <Field name={'variableValues.[' + i +']value' } placeholder='value' />
-
-      </>
-    )
-
-  }
-  return arr;
-}
-
-const addContact = (totalContact) => {
-  let arr = [];
-  for (let i = 0; i < totalContact; i++) {
-    let contactName = `contacts[${i}]`
-    arr.push(
-      <>
-        <div className="editContact">
-          <img src={editIcon} className="editIcon" alt="" />
-          <div className="contacttable">
-            <div className="tablerow">
-
-              <h3>Title</h3>
-              <Field name={contactName + '.title'} placeholder='Mr' />
-            </div>
-            <div className="tablerow">
-
-              <h3>Name</h3>
-              <Field name={contactName + '.name'} placeholder='Mrfsf' />
-            </div>
-            <div className="tablerow">
-
-              <h3>Phome Number</h3>
-              <Field name={contactName + '.email'} placeholder='Mrfdsf@gmail.com' />
-            </div>
-            <div className="tablerow">
-
-              <h3>Email</h3>
-              <Field name={contactName + '.contactNo'} placeholder='Mrfds' />
-            </div><div className="tablerow">
-
-              <h3>Designation</h3>
-              <Field name={contactName + '.designation'} placeholder='Mrds' />
-            </div><div className="tablerow">
-
-              <h3>Telegram Username</h3>
-              <Field name={contactName + '.tgUsername'} placeholder='Mr  dff' />
-            </div>
-          </div>
-        </div>
-      </>
-    )
-  }
-  return arr;
-}
-
 
 const Dashboard = () => {
 
@@ -105,12 +40,12 @@ const Dashboard = () => {
 
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
-          
+
           let arr = values.variableValues;
           let size = Object.keys(arr).length
           console.log(arr)
-          let obj ={}
-          for(let i =0 ; i<size; i++){
+          let obj = {}
+          for (let i = 0; i < size; i++) {
             obj[arr[i].key] = arr[i].value
           }
           values.variableValues = obj
@@ -172,9 +107,10 @@ const Dashboard = () => {
 
                 </div>
                 <div className="varinputs">
-                  {/* map */}
+                  
 
-                  {addVarible(count,)}
+                  {VarCard(count)}
+
                 </div>
 
               </div>
@@ -189,15 +125,10 @@ const Dashboard = () => {
                   <button onClick={() => { setTotalContact(totalContact + 1) }} >ADD NEW</button>
 
                 </div>
-                {addContact(totalContact)}
-
+                {ContactCard(totalContact)}
 
               </div>
             </div>
-
-
-
-
           </div>
 
         </Form>
