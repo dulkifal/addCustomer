@@ -16,7 +16,7 @@ app.get("/api", (req, res) => {
 app.post("/clients/customers/add", (req, res) => {
   console.log(req.body);
   arr.push(req.body);
-  res.json(req.body + " added successfully");
+  res.json(req.body  );
 }
 )
 

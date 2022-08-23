@@ -106,15 +106,14 @@ const Dashboard = () => {
         }}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           
-        
-           
-         values.variableValues= values.variableValues.map(item => {
-            item.key = item.value;
+          let arr = values.variableValues;
+          let size = Object.keys(arr).length
+          console.log(arr)
+          let obj ={}
+          for(let i =0 ; i<size; i++){
+            obj[arr[i].key] = arr[i].value
           }
-          )
-
-
-          
+          values.variableValues = obj
 
           fetch("clients/customers/add", {
             method: "POST",
@@ -124,7 +123,7 @@ const Dashboard = () => {
             body: JSON.stringify(values)
           }).then(res => res.json())
             .then(data => {
-              console.log(data);
+              // console.log(data);
 
               resetForm();
               setSubmitting(false);
