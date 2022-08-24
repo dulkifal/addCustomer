@@ -10,7 +10,7 @@ body {
 
 }
 
- 
+
 /* topbar */
 
 .topnav {
@@ -137,7 +137,7 @@ body {
   flex-direction: column;
   padding: 3rem;
 }
- 
+
 .addcustomer {
   display: flex;
   flex-direction: row;
@@ -149,7 +149,6 @@ body {
   font-size: 21px;
   line-height: 24px;
 
-
 }
 
 .dashboard button {
@@ -159,7 +158,12 @@ body {
   padding: 5px;
   background-color: #D7D8E0;
   border-radius: 5px;
-  /* padding: 1rem; */
+  
+}
+
+button:hover {
+  background-color: #71A0F8;
+  color: #FFFFFF;
 }
 
 .formdiv {
@@ -204,20 +208,21 @@ body {
 }
 
 
-.var_contacts{
+.var_contacts {
   display: flex;
   flex-direction: row;
-    grid-template-columns: 48% 48%;
-    gap: 1rem;
+  grid-template-columns: 48% 48%;
+  gap: 1rem;
 }
+
 /* variables */
 .variables {
   display: flex;
-    flex-direction: column;
-    background-color: #E7EEF4;
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 5px;
+  flex-direction: column;
+  background-color: #E7EEF4;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .varhead {
@@ -238,79 +243,82 @@ body {
 
 .variables .varinputs {
   display: grid;
-    grid-template-columns: 60% 35%;
-    gap: 1.5rem 1.5rem;
-    padding: 1rem 1rem 0 0;
+  grid-template-columns: 60% 35%;
+  gap: 1.5rem 1.5rem;
+  padding: 1rem 1rem 0 0;
 
 }
-.variables .varinputs *{
+
+.variables .varinputs * {
   padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    box-shadow: inset 2px 1px 5px 0px #afa9a9;
-    text-align: center;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: inset 2px 1px 5px 0px #afa9a9;
+  text-align: center;
 }
-.contact  {
+
+.contact {
   background-color: #E7EEF4;
   border-radius: 5px;
   width: 442px;
   height: auto;
   margin: 1rem 0;
-    
+
 }
 
-.tablerow{
+.tablerow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: #2E2E2E 1px solid;
-   box-shadow: inset 2px 1px 5px 0px #afa9a9;
-  
-  
+  box-shadow: inset 2px 1px 5px 0px #afa9a9;
+
+
 }
-.tablerow1  {
-   
+
+.tablerow1 {
+
   box-shadow: inset 2px 1px 5px 0px #afa9a9;
 }
-.tablerow h3{
+
+.tablerow h3 {
   color: #676464;
   font-size: 12px;
   padding: 5px 0 0 10px;
 }
-.tablerow input{
+
+.tablerow input {
   padding: 10px;
   border-radius: 5px;
   border: 0;
-   
-}
-/* .editContact img{
-  width: 20px;
-  height: 20px;
-align-self: center; 
-} */
 
-.addcontact{
+}
+
+ 
+.addcontact {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   /* align-items: center; */
   padding: 3px 10px;
-   margin: 1px 1rem;
+  margin: 1px 1rem;
   background-color: #D7D8E0;
   border-radius: 5px;
-  
-  
+
+
 }
+
 .editContact {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items:  stretch;
+  align-items: stretch;
   background: #FFFFFF;
-   margin: 1rem 1rem;
-  
+  margin: 1rem 1rem;
+
 }
-.editIcon{
+
+.editIcon {
   align-self: flex-end;
 }

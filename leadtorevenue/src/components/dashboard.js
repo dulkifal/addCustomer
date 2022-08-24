@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import ContactCard from './contactCard'
-
 import Contact from '../assets/images/contact.svg';
 import fluentPerson from '../assets/images/fluentPerson.svg';
 import square_root from '../assets/images/square_root.svg';
