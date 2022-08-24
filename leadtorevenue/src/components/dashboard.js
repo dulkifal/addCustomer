@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import VarCard from './varCard'
 import ContactCard from './contactCard'
 
 import Contact from '../assets/images/contact.svg';
@@ -12,7 +11,12 @@ const Dashboard = () => {
 
   const [count, setCount] = useState(1);
   const [totalContact, setTotalContact] = useState(1);
+  const [totalVar, setTotalVar] = useState([1]);
+  function todo() {
+     setCount(count + 1)  ;
+    setTotalVar([...totalVar, count]);
 
+  }
 
   return (
     <div>
@@ -103,13 +107,19 @@ const Dashboard = () => {
                   <div className="divgrow">
 
                   </div>
-                  <button onClick={() => { setCount(count + 1) }}>ADD VARIABLE</button>
+                  <button onClick={ ()=>{todo()} }>ADD VARIABLE</button>
 
                 </div>
                 <div className="varinputs">
 
 
-                  {VarCard(count)}
+                  {totalVar.map((i,index)=>{
+                    return < >
+                      <Field name={'variableValues.[' + index + ']key'} placeholder={'Variable' + (index +1) + ' key'} />
+                      <Field name={'variableValues.[' + index + ']value'} placeholder='value' />
+
+                    </>
+                    } )}
 
                 </div>
 
