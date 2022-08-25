@@ -7,11 +7,6 @@ app.use(express.json());
 
 let arr = [];
 
-app.get("/api", (req, res) => {
-  res.json(arr);
-});
-
-
 
 app.post("/clients/customers/add", (req, res) => {
   console.log(req.body);
